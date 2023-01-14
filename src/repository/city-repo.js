@@ -11,12 +11,13 @@ class CityRepoistory{
     }
     async deleteCity(cityid){
        try{
-            await City.destroy({
+            const response=await City.destroy({
                     where: {
                         id:cityid
                     }
                 }
             )
+            return response;
         }
         catch(error){
             throw(error);
