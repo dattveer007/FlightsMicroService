@@ -1,6 +1,8 @@
 const {CityServices}=require('../services/index');
 const cityservice=new CityServices();
+
 class CityController{
+    
     async create(req,res){
         const data=req.body;
         try {
