@@ -3,6 +3,24 @@ class CityServices{
     constructor(){
         this.cityrepository=new CityRepositroy();
     }
+    async getAll(){
+        try {
+            const city=await this.cityrepository.getCityAll();
+             
+            return city;
+        } catch (error) {
+                throw(error);
+        }
+    }
+    async getCity({id}){
+        try {
+            const city=await this.cityrepository.getCity(id);
+             
+            return city;
+        } catch (error) {
+            throw(error);   
+        }
+    }
     async createCity({name}){
         try {
             const city=  await this.cityrepository.createCity(name);
@@ -17,6 +35,15 @@ class CityServices{
             return response
         } catch (error) {
             throw (error);            
+        }
+    }
+    async updateCity(id,data){
+
+        try {
+          const city=await this.cityrepository.updateCity(id,data);
+          return city;
+        } catch (error) {
+            throw(error);
         }
     }
 }
