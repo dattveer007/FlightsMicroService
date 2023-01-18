@@ -4,7 +4,16 @@ const cityservice=new CityServices();
 class CityController{
     async getAll(req,res){
         try {
+            const filter=req.query;
+            
 
+            if(filter){
+
+                const cities=await cityservice.getAll(filter);
+                return res.status(200).json({
+                    City:cities
+                });
+            }
             const city=await cityservice.getAll();
             return res.status(200).json({
                 City:city
@@ -12,7 +21,7 @@ class CityController{
             
           } catch (error) {
                 return res.status(404).json({
-                    err:error
+                    err:{error}
                 })
           }
     }

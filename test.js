@@ -3,7 +3,7 @@ let obj={
     name:"veer",
     usn:'188'
 }
-function extract({name}){
-    console.log(name);
+function extract(name){
+    console.log("veer");
 }
-extract(obj);
+extract();

@@ -3,8 +3,14 @@ class CityServices{
     constructor(){
         this.cityrepository=new CityRepositroy();
     }
-    async getAll(){
+    async getAll({filter}){
+
         try {
+            if(filter){
+
+                const cities=await this.cityrepository.getCityAll(filter);
+                return cities;
+            }
             const city=await this.cityrepository.getCityAll();
              
             return city;

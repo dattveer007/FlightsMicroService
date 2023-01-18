@@ -1,9 +1,28 @@
 const {City}=require('../models/index');
+const {Op}=require('sequelize');
 class CityRepoistory{
-    async getCityAll(){
+    async getCityAll(filter){
+        
         try {
-            const city=await City.findAll()
-            return city;
+
+            if(filter){
+
+                const city=await City.findAll({
+                    where:{
+                        name:{    
+                            [Op.startsWith]:filter
+                        }
+                    }
+                }
+                
+                )
+
+                return city;
+            }
+
+            
+             const city=await City.findAll()
+             return city;
        } catch (error) {
             throw(error);
        }
